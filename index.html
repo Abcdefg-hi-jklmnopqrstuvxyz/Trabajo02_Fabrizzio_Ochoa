@@ -110,5 +110,30 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+		 <script>
+        // Validación de email y contraseña
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                var email = $('#inputEmail').val();
+                var password = $('#inputPassword').val();
+
+                if (!isValidEmail(email) || !isValidPassword(password)) {
+                    event.preventDefault();
+                    alert('Por favor, introduce un email y contraseña válidos.');
+                }
+            });
+
+            function isValidEmail(email) {
+                // RegEx para validar email
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function isValidPassword(password) {
+                // Validar que la contraseña tenga al menos 6 caracteres
+                return password.length >= 6;
+            }
+        });
+    </script>
     </body>
 </html>
